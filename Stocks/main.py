@@ -1,31 +1,19 @@
-import yfinance as yf
-import streamlit as st
-
-st.write("""
-# Current Stocks Price Quotes
-Showing the stock closing price and volume of : 
-""")
-
-st.write("""
-## Google Inc.
-""")
-#tickerSymbol = 'GOOGL'
-#get data on this ticker
-#tickerData = yf.Ticker(tickerSymbol)
-#get the historical prices for this ticker
-#tickerDf = tickerData.history(period='1d', start='2010-5-31')
-# Open	High	Low	Close	Volume	Dividends	Stock Splits
-
-st.write("""
-         Google - Closing Prices
-          """)
-#st.line_chart(tickerDf.Close)
-st.write("""
-         Google - Volume
-          """)
-#st.line_chart(tickerDf.Volume)
+from flask import Flask
 
 
-st.write("""
-         [Powered by CarmelSoft](https://carmelsoft.netlify.app "CarmelSoft's Homepage")
-          """)
+# If `entrypoint` is not defined in app.yaml, App Engine will look for an app
+# called `app` in `main.py`.
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello():
+    """Return a friendly HTTP greeting."""
+    return 'Hello World!'
+
+
+if __name__ == '__main__':
+    # This is used when running locally only. When deploying to Google App
+    # Engine, a webserver process such as Gunicorn will serve the app. You
+    # can configure startup instructions by adding `entrypoint` to app.yaml.
+    app.run(host='127.0.0.1', port=8080, debug=True)
